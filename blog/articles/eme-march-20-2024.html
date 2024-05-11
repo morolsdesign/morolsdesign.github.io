@@ -1,0 +1,376 @@
+<!doctype html>
+<article class="blog-post">
+  <h2 class="display-6 link-body-emphasis mb-1">Earth Moon Earth (EME) Lab.</h2>
+  <p class="blog-post-meta">March 20, 2024 by <a href="#">KM6BSO and K2ATC</a></p>
+  <p>While experimenting with various long distance communication modes in amateur radio world, Earth Moon Earth (EME) stood out as one of the most challenging, rewarding, and technologically all encompassing projects. We started building a EME station for ourselves and share the love with the world so that others can use what we build, kids can learn about space, weather, radio communication, electricity, and technology enthusiasts can join in building reproducible EME stations, DX chaser facilities, comprehensive weather monitoring and analysis capabilities, space exploration through electromagnetic waves and unleash curiosity and creativity. EME is not new, but we now have more advanced computational technology, more advanced Digital Signal Processing, and the new Software Defined Radio (SDR) technology, we are taking a baby step forward and redoing most aspects of EME by using technologies we have at our disposal. The basic background of EME can be found here <a href="https://en.wikipedia.org/wiki/Earth–Moon–Earth_communication" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Earth–Moon–Earth_communication</a></p>
+  
+  <p>The major fun and main challenge of EME communication is huge loss in reflected signal strength. It is ~252 dB. Every 3 dB loss halves the signal strength. So 252 dB loss is equivalent of 1 unit getting reduced to
+    <math>
+      <mn>2</mn>
+      <sup>-84</sup></math>
+    unit. And then comes the latency. The signal propagation time from Earth to the Moon and back ranges between 2.4 and 2.7 seconds. These limitations make EME technically very challenging yet rewarding. The equipments need to be capable of dealing with efficient signal propagation, weak signal reception, and decoding the weak signal meaningfully. We can group the challenges into three categories. Limitations, choices with trade-offs and QSO planning. Since we will be using the term <b>QSO</b> a lot, for those who are not familiar with Q-code, it means a confirmed bidirectional communication or successful contact between two parties.
+  <div class="row justify-content-md-left">
+    <div class="col-md-auto">
+      <ul>
+        <h5>Limitations</h5>
+        <li>Loss of signal strength in full path propagation</li>
+        <li>Noise accumulation</li>
+        <li>Farade rotation</li>
+      </ul>
+      <ul>
+        <h5>Choices with Trade-Offs</h5>
+        <li>Choice of the frequency</li>
+        <li>Choice of polarization</li>
+        <li>Choice of Antenna Size, Type and Numbers</li>
+        <li>Choice of communication mode (voice/CW/digital)</li>
+        <li>Choice of Radio</li>
+      </ul>
+      <ul>
+        <h5>QSO Planning</h5>
+        <li>Readiness of both QTH</li>
+        <li>Polarization matching</li>
+        <li>Position of Sun wrt QTH and Moon</li>
+        <li>Position of Moon wrt Earth</li>
+        <li>Position of Moon wrt QTH</li>
+        <li>Establishing QSO time</li>
+      </ul>
+    </div>
+    <div class="col-md-5"> <img class="img-fluid" src="/images/EME.jpg" alt=""/>
+      <center>
+        Fig-1: EME Propagation
+      </center>
+    </div>
+  </div>
+  </p>
+  <p>Let's call the above mentioned limitations, trade-offs, and planning as concerns collectively.</p>
+  <h2>Addressing the concerns</h2>
+  <p>The concerns are not addressed in the same order as they are listed above.</p>
+  <h3>Dealing with loss of signal strength</h3>
+  <p>To begin with, let's make sure we can receive moderately strong signal from large known EME stations. That should be our first goal and then a clean enough and powerful enough transmission that can be read by large EME stations. This is the beginnning, before we become large powerful EME station.</p>
+  <p>Even with a moderately powerful EME station at the other side of the QSO, the received signal is going to be weak, so we need machinery to deal with it. Let's go with the proverbial Ham saying, "If you can't hear, you can't work." That demands a good antenna.</p>
+  <h5>A good EME antenna system</h5>
+  <p>A massive array with 9 antennas? I wish but that's not a reasonable start. An array of 4 144MHz Yagis? That's great but still not a modest beginning. How about only one 144MHz antenna? </p>
+  <p>Let's assume if we can receive and read a moderately powerful station, that station can read us by the virtue of having better reception machinery. With that, let's focus on improving our reception.</p>
+  <h5>Considering a single 144MHz Yagi-Uda antenna</h5>
+  <p>How about a 9el 144Mhz Yagi? This is seemingly impossible. But we have examples around the world using this types of antennas in EME contacts with good success. Let's examine that possibility with some basic math. Let's see if we can copy our own echo using this type of antenna.</p>
+  <p>The mode (voice, CW, digital) of choice will determine an acceptable SNR in order to copy the transmitted information. Let's first see the link budget involving SNR</p>
+  <p>
+    <math>
+      <mi>SNR</mi>
+      <mo>=</mo>
+      <msub>
+        <mi>P</mi>
+        <mn>r</mn>
+      </msub>
+      <mo>-</mo>
+      <msub>
+        <mi>P</mi>
+        <mn>n</mn>
+      </msub>
+    </math>
+    OR
+    <math>
+      <msub>
+        <mi>P</mi>
+        <mn>r</mn>
+      </msub>
+      <mo>=</mo>
+      <mi>SNR</mi>
+      <mo>+</mo>
+      <msub>
+        <mi>P</mi>
+        <mn>n</mn>
+      </msub>
+    </math>
+  </p>
+  <p>
+    <math>
+      <msub>
+        <mi>P</mi>
+        <mn>t</mn>
+      </msub>
+      <mo>=</mo>
+      <msub>
+        <mi>P</mi>
+        <mn>r</mn>
+      </msub>
+      <mo>-</mo>
+      <msub>
+        <mi>G</mi>
+        <mn>t</mn>
+      </msub>
+      <mo>-</mo>
+      <msub>
+        <mi>G</mi>
+        <mn>r</mn>
+      </msub>
+      <mo>+</mo>
+      <mi>L</mi>
+    </math>
+  </p>
+  <p>
+    <math>
+      <msub>
+        <mi>P</mi>
+        <mn>t</mn>
+      </msub>
+    </math>
+    and
+    <math>
+      <msub>
+        <mi>P</mi>
+        <mn>r</mn>
+      </msub>
+    </math>
+    are transmitted and received power in dBW.
+    <math>
+      <msub>
+        <mi>G</mi>
+        <mn>t</mn>
+      </msub>
+    </math>
+    and
+    <math>
+      <msub>
+        <mi>G</mi>
+        <mn>r</mn>
+      </msub>
+    </math>
+    are transmission and receiving antenna gains in dBi.
+    <math>
+      <mi>L</mi>
+    </math>
+    is EME path loss in dB.
+    <math>
+      <msub>
+        <mi>P</mi>
+        <mn>n</mn>
+      </msub>
+    </math>
+    is the receiving noise power in dBW. </p>
+  <p>Let's do some substituion from the above two equations. And an assumption that receiving antenna gain
+    <math>
+      <msub>
+        <mi>G</mi>
+        <mn>r</mn>
+      </msub>
+    </math>
+    and transmission antenna gain
+    <math>
+      <msub>
+        <mi>G</mi>
+        <mn>t</mn>
+      </msub>
+    </math>
+    are the same. i.e.
+    <math>
+      <msub>
+        <mi>G</mi>
+        <mn>r</mn>
+      </msub>
+      <math>
+        <mo>=</mo>
+        <msub>
+          <mi>G</mi>
+          <mn>t</mn>
+        </msub>
+      </math>
+      <mo>=</mo>
+      <math>
+        <mi>G</mi>
+      </math>
+    </math>
+  </p>
+  <math>
+    <msub>
+      <mi>P</mi>
+      <mn>t</mn>
+    </msub>
+    <mo>=</mo>
+    <mi>SNR</mi>
+    <mo>+</mo>
+    <msub>
+      <mi>P</mi>
+      <mn>n</mn>
+    </msub>
+    <mo>-</mo>
+    <mi>2G</mi>
+    <mo>+</mo>
+    <mi>L</mi>
+  </math>
+  <p>
+    <math>
+      <msub>
+        <mi>P</mi>
+        <mn>n</mn>
+      </msub>
+      <mo>=</mo>
+      <mn>10</mn>
+      <mi>log(k</mi>
+      <msub>
+        <mi>T</mi>
+        <mn>s</mn>
+      </msub>
+      <mi>B)</mi>
+    </math>
+  </p>
+  <p>
+    <math>
+      <mi>k</mi>
+      <msub>
+        <mi>T</mi>
+        <mn>s</mn>
+      </msub>
+      <mi>B</mi>
+    </math>
+    is the received noise power.
+    <math>
+      <msub>
+        <mi>P</mi>
+        <mn>n</mn>
+      </msub>
+    </math>
+    is the received nose power in dBW. </p>
+  <p>
+    <math>
+      <mi>k</mi>
+      <mo>=</mo>
+      <mn>1.38</mn>
+      <mo>x</mo>
+      <mn>10</mn>
+      <sup>-23</sup></math>
+    Joules/K and is called Boltzmann's constant. </p>
+  <p>A typical system noise temperature
+    <math>
+      <msub>
+        <mi>T</mi>
+        <mn>s</mn>
+      </msub>
+      <mo>=</mo>
+      <mi>100K</mi>
+    </math>
+    . </p>
+  <p>What should be the value of
+    <math>
+      <mi>B</mi>
+    </math>
+    ? For digital mode, JT65 is 2500 Hz, for CW it is 50Hz.</p>
+  <p> So the received noise power in dbW is -176.6218 for JT65. For CW it is -191.6115. As we can see, noise power gets lower with lower bandwidth. But then SNR tolerance varies widely. The difference in noise power in dBW is about 15 dBW favoring CW. Where as the minimum SNR needed for JT65 is -24 Db and for CW it is 3 dB. Difference is 27 dB favoring JT65. Combining these two JT65 have about 12 dB advantage. Which is 16 times more transmission power for CW. I don't know how Joe Taylor found it 10 times in his calculation. But hey he is the JT. May be difference in system noise temperature while operating in CW! Anyway, since we established digital is advantageous in terms for transmission power needed, let's see the real number i.e. the real transmission power needed for the transmitter for JT65. </p>
+  <p>Let's consider transmitter and receiver has identical antenna. A single 9 element yagi at each side. Such antenna typically has the 
+    gain
+    <math>
+      <mi>G</mi>
+      <mo>=</mo>
+      <mn>14.1</mn>
+      <mi> dBi</mi>
+    </math>
+    . </p>
+  <p>Now let's focus on the value of
+    <math>
+      <mi>L</mi>
+    </math>
+    . </p>
+  <p>
+    <math>
+      <mi>L</mi>
+      <mo>=</mo>
+      <mn>261.6</mn>
+      <mo>+</mo>
+      <mn>20</mn>
+      <mi>log(f</mi>
+      <mo>/</mo>
+      <mn>432</mn>
+      <mi>)</mi>
+    </math>
+  </p>
+  <p>With
+    <math>
+      <mi>f</mi>
+      <mo>=</mo>
+      <mn>144</mn>
+      <mi>MHz</mi>
+    </math>
+    ,
+    <math>
+      <mi>L</mi>
+      <mo>=</mo>
+      <mn>252</mn>
+      <mi>dB</mi>
+    </math>
+    . </p>
+  <p>Let's revisit the equation
+    <math>
+      <msub>
+        <mi>P</mi>
+        <mn>t</mn>
+      </msub>
+      <mo>=</mo>
+      <mi>SNR</mi>
+      <mo>+</mo>
+      <msub>
+        <mi>P</mi>
+        <mn>n</mn>
+      </msub>
+      <mo>-</mo>
+      <mi>2G</mi>
+      <mo>+</mo>
+      <mi>L</mi>
+    </math>
+  </p>
+  <p>Substitute the values obtained so far.
+    <math>
+      <msub>
+        <mi>P</mi>
+        <mn>t</mn>
+      </msub>
+      <mo>=</mo>
+      <mi>-24</mi>
+      <mo>+</mo>
+      <mn>(-176.62)</mn>
+      <mo>-</mo>
+      <mi>2 x 14.1</mi>
+      <mo>+</mo>
+      <mi>252</mi>
+      <mo>=</mo>
+      <mn>23.18 dBW</mn>
+    </math>
+  </p>
+  <p>23.18 dBW is equivalent to 208 watts of transmission power. We need ~208 watts of transmission power in order to copy self-echo in digital mode using JT65. CW would require 16 times more power. This is for self-echo or communicating with an identical station with an identical antenna and same transmission power of 208 watts.</p>
+  <p>Now we have baselined what the antenna and transmission power should be for a EME station capable of self-echoing using a digital mode using JT65. This baseline setup can be duplicated and they can communicate with each other too using JT65. Let's now examine whether we can enhance the station's capability without increasing transmission power, and find out if we can reduce transmission power while still achieving the goal.</p>
+  <h4>Techniques to acquire additional gains</h4>
+  <p>The goal is to not increase transmission power, but decrease if permissible.</p>
+  <p>Let's say we have Station A and Station B. In bidirectional communication, antenna gain at any station will improve received power in both directions. This means antenna gain at either side adds up to the link budget and reduce the requirement for a minimum power budget. If we add <strong>n</strong> dB of link budget at either side of the link, i.e. either station, power budget can be reduced by <strong>n</strong> dB at both sides totaling a <strong>2n</strong> dB power reduction, whereas increasing the power budget to one side of the link i.e. at one station only helps the other station to receive higher signal strength but does not help its own station receive better as the other station did not add any additional power for transmission. So if we add anything to the link budget, that gives us an opportunity to work weaker stations deficient in both transmission and reception.</p>
+  <div class="row justify-content-md-left">
+    <div class="col-md-5"> <img class="img-fluid" src="/images/eme-budget.jpg" alt=""/>
+      <center>
+        Fig-2: Total Communication Budget
+      </center>
+    </div>
+    <div class="col-md-7">
+      <p>In this diagram, if we increase gain <i><b>g</b></i> to the power amplifer (PA) at station <b>A</b>, it makes the station <b>B</b> hear better. But that does not add any receiving gain benefit to the station <b>A</b>. And the same holds true reciprocally if we increase gain of the PA of station <b>B</b>. </p>
+      <p>Similarly, if we add a LNA to increase receiving gain <i><b>g</b></i> at station <b>A</b>, that does not add any receiving gain to the station <b>B</b>. And the reverse holds true.</p>
+		<p> Let's assume that we have 2 identical stations optimally setup to establish bidirectional contacts between themselves. Now we reduce the overall gain for both the stations such a way that they are just a bit short in gain for a successful contact. Let's say that gain deficiency is <i><b>g</b></i>. If the station <b>A</b> can add this gain <i><b>g</b></i> to it's PA, it can reach station <b>B</b>. Station <b>B</b> in the other hand, can't reach station <b>A</b> just because station <b>A</b> added gain to <b>A</b>'s PA. In this situation, <b>B</b> can hear <b>A</b> but not the opposite. Instead of adding transmission power, if <b>A</b> adds gain <i><b>g</b></i> to its receiving capability through LNA, <b>A</b> can now hear <b>B</b>, but <b>B</b> can't hear <b>A</b>. So adding gain to transmission or receiving circuitry (PA or LNA) adds only one way benefit. Instead of adding any additional transmission gain or receiving gain through PA or LNA, if we add this gain <i><b>g</b></i> to either sides of the antennas, <b>A</b> and <b>B</b> now would be able to make successful contacts. In other words, antenna gain is a shared budget and has a bidirectional effect, station gain (PA and LNA) is local budget with unidirectional effect.
+		
+		</p>
+    </div>
+  </div>
+
+	<h4>Ground gain, where does it go?</h4>
+If you are endowed with a very good RF ground, like a big water body, a moist field, a marsh land, there will be some ground gain. Considering the transmission path and receiving path are same with direction reversed, the ground gain is added to both transmission and reception even when the ground is at one side of the two communicating stations. So a good RF ground is part of shared link budget. 
+<p>
+	Ground gain can be ~6 dB for an excellent RF ground and optimally positioned antenna over the ground. With same power transmitted a station can reach to another station with 6 dB weaker receiving antenna gain. Or the transmitting station can reduce the transmission power to one quarter of reference power. Our calculated reference power for the reference setup was 208 watts, with 6 dB ground gain that power can be reduced to 208/4 = 52 watts. That's a great gain. If more successful QSOs with weaker stations are desired, reduction in power is desirable. With higher transmission power at one end would make weaker stations to hear us but may not be able to reach back and complete the QSO. 
+</p>
+ <h4>References</h4>
+<ul>  
+       
+        <li><cite>Optimized Small-Station EME X-pol at 432 MHz</cite> by Joe Taylor, K1JT. <a href="https://wsjt.sourceforge.io/Optimized_Small-Station_EME.pdf" target="_blank">https://wsjt.sourceforge.io/Optimized_Small-Station_EME.pdf</a></li>
+        <li><cite>Ground gain and radiation angle at VHF</cite> at QSL.net <a href="https://www.qsl.net/oz1rh/gndgain/gnd_gain_eme_2002.htm">https://www.qsl.net/oz1rh/gndgain/gnd_gain_eme_2002.htm</a></li>
+	
+		<li>Q Codes <a href="https://en.wikipedia.org/wiki/Q_code">https://en.wikipedia.org/wiki/Q_code</a></li>
+	
+	
+      </ul>
+  
+
+
+</article>

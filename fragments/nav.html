@@ -1,0 +1,30 @@
+<!doctype html>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid"> <a class="navbar-brand" href="/">Space-RF.org</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
+          class="navbar-toggler-icon"></span> </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"> <a class="nav-link" href="/blog/blog.html">Activity Log</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="/papers/papers.html">Papers</a> </li>
+        <!-- li class="nav-item"> <a class="nav-link" href="/pages/prototypes.html">Prototypes</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="/pages/datacenter.html">Data Center</a> </li -->
+        <li class="nav-item"> <a class="nav-link" href="/pages/about.html">About</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="/pages/about.html">Contacts</a> </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control" type="search" 
+       name="search" placeholder="Search" 
+       hx-post="/search" 
+       hx-trigger="input changed delay:500ms, search" 
+       hx-target="#search-result" 
+       hx-indicator=".htmx-indicator">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+    <!-- <script async src="https://cse.google.com/cse.js?cx=81df83b9b451b4e1b">
+</script>
+<div class="gcse-search"></div> --> 
+  </div>
+</nav>
